@@ -56,10 +56,10 @@ pipeline {
             steps{
                 script{
                     dir('EKS') {
-                        sh 'terraform destroy'
+                        sh 'terraform destroy --auto-approve'
                         //sh 'terraform apply --auto-approve'
                     }
-                    input(message: "Are you sure to proceed to destroy resources?", yes: "yes")
+                    
                 }
             }
         }
