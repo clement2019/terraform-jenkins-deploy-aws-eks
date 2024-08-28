@@ -19,7 +19,7 @@ pipeline {
                     dir('maual-EKS/Kubernetesfiles') {
                         sh 'echo "starting a fresh"'
                         
-                        sh 'aws eks update-kubeconfig --name my-eks-cluster-209'
+                        sh 'aws eks update-kubeconfig --name eks-cluster-209'
                         sh 'kubectl config current-context'
                         sh 'eksctl get cluster'
                         sh "kubectl get ns"
