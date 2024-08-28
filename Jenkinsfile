@@ -13,62 +13,11 @@ pipeline {
                 }
             }
         }
-         
-        stage('Initializing Terraform'){
-            steps{
-                script{
-                    dir('EKS'){
-                        sh 'terraform init --upgrade'
-                    }
-                }
-            }
-        }
-        stage('Formatting Terraform Code now'){
-            steps{
-                script{
-                    dir('EKS'){
-                        sh 'terraform fmt'
-                    }
-                }
-            }
-        }
-        stage('Validating Terraform'){
-            steps{
-                script{
-                    dir('EKS'){
-                        sh 'terraform validate'
-                    }
-                }
-            }
-        }
-        stage('Previewing the Infra using Terraform'){
-            steps{
-                script{
-                    dir('EKS'){
-                        //sh 'terraform plan'
-                        //sh 'echo "start to destroy"'
-                    }
-                    //input(message: "Are you sure to proceed?", ok: "Proceed")
-                }
-            }
-        }
-        stage('Creating/Destroying an EKS Cluster'){
-            steps{
-                script{
-                    dir('EKS') {
-                        sh 'terraform destroy --auto-approve'
-                        //sh 'terraform apply --auto-approve'
-                    }
-                    
-                }
-            }
-        }
         stage('Deploying Nginx Application') {
             steps{
                 script{
-
-                    dir('EKS/ConfigurationFiles') {
-
+                    dir('maual-EKS/Kubernetesfiles') {
+                        sh 'echo "starting a fresh"'
                         sh "kubectl get ns"
                         sh 'kubectl version --client'
                         sh 'eks version'
@@ -79,8 +28,13 @@ pipeline {
                         sh "kubectl get ns"
                         sh 'kubectl apply -f deployment.yaml'
                         sh 'kubectl apply -f service.yaml'
+
+
                     }
                 }
+                    
+                    
+                    
                     
             }
             
