@@ -58,6 +58,7 @@ pipeline {
                         sh 'terraform destroy'
                         //sh 'terraform apply --auto-approve'
                     }
+                    input(message: "Are you sure to proceed to destroy resources?", ok: "to destroy")
                 }
             }
         }
@@ -65,7 +66,7 @@ pipeline {
             steps{
                 script{
                     dir('maual-EKS/Kubernetesfiles') {
-                        sh 'echo "starting afresh"'
+                        sh 'echo "starting a fresh"'
                         //sh "kubectl get ns"
                         //sh 'kubectl version --client'
                         //sh 'eks version'
