@@ -23,7 +23,7 @@ pipeline {
                 }
             }
         }
-        stage('Formatting Terraform Code'){
+        stage('Formatting Terraform Code now'){
             steps{
                 script{
                     dir('EKS'){
