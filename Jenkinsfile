@@ -46,7 +46,7 @@ pipeline {
                 script{
                     dir('EKS'){
                         //sh 'terraform plan'
-                        sh 'echo "start to destroy"'
+                        //sh 'echo "start to destroy"'
                     }
                     //input(message: "Are you sure to proceed?", ok: "Proceed")
                 }
@@ -66,35 +66,21 @@ pipeline {
         stage('Deploying Nginx Application') {
             steps{
                 script{
-                    dir('maual-EKS/Kubernetesfiles') {
-                        sh 'echo "starting a fresh"'
-                        //sh "kubectl get ns"
-                        //sh 'kubectl version --client'
-                        //sh 'eks version'
-                        //sh 'eksctl get cluster'
-                        //sh 'aws eks update-kubeconfig --name my-eks-cluster-210'
-                        //sh 'kubectl config current-context'
-                        //sh 'eksctl get cluster'
-                        //sh "kubectl get ns"
-                        //sh 'kubectl apply -f deployment.yaml'
-                        //sh 'kubectl apply -f service.yaml'
 
+                    dir('EKS/ConfigurationFiles') {
 
+                        sh "kubectl get ns"
+                        sh 'kubectl version --client'
+                        sh 'eks version'
+                        sh 'eksctl get cluster'
+                        sh 'aws eks update-kubeconfig --name my-eks-cluster-209'
+                        sh 'kubectl config current-context'
+                        sh 'eksctl get cluster'
+                        sh "kubectl get ns"
+                        sh 'kubectl apply -f deployment.yaml'
+                        sh 'kubectl apply -f service.yaml'
                     }
                 }
-                    
-                    
-                    //dir('EKS/ConfigurationFiles') {
-                       // sh "kubectl get ns"
-                        //sh 'kubectl version --client'
-                        //sh 'eks version'
-                       // sh 'eksctl get cluster'
-                        //sh 'aws eks update-kubeconfig --name my-eks-cluster-209'
-                        //sh 'kubectl config current-context'
-                        //sh 'eksctl get cluster'
-                        //sh "kubectl get ns"
-                       // sh 'kubectl apply -f deployment.yaml'
-                        //sh 'kubectl apply -f service.yaml'
                     
             }
             
