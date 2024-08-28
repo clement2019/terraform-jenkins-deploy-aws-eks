@@ -79,6 +79,7 @@ pipeline {
 
 
                     }
+                }
                     
                     
                     //dir('EKS/ConfigurationFiles') {
@@ -92,9 +93,11 @@ pipeline {
                         //sh "kubectl get ns"
                        // sh 'kubectl apply -f deployment.yaml'
                         //sh 'kubectl apply -f service.yaml'
-                    }
-                }
+                    
             }
+            
         }
     }
 }
+    
+
