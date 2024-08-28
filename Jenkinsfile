@@ -23,8 +23,8 @@ pipeline {
                         sh 'kubectl config current-context'
                         sh 'eksctl get cluster'
                         sh "kubectl get ns"
-                        sh 'kubectl apply -f ./deployment.yaml'
-                        sh 'kubectl apply -f ./service.yaml'
+                        sh 'kubectl apply -f ../deployment.yaml'
+                        sh 'kubectl apply -f ../service.yaml'
 
 
                     }
