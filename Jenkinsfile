@@ -16,27 +16,24 @@ pipeline {
         stage('Deploying Nginx Application') {
             steps{
                 script{
-                    dir('maual-EKS/Kubernetesfiles') {
-                        sh 'echo "starting a fresh"'
-                        
-                        sh 'aws eks update-kubeconfig --name eks-cluster-209'
-                        sh 'kubectl config current-context'
-                        sh 'eksctl get cluster'
-                        sh "kubectl get ns"
-                        sh 'kubectl apply -f ../deployment.yaml'
-                        sh 'kubectl apply -f ../service.yaml'
+                    sh 'aws eks update-kubeconfig --name eks-cluster-209'
+                    sh 'kubectl config current-context'
+                    sh 'eksctl get cluster'
+                    sh "kubectl get ns"
+                    sh 'kubectl apply -f ../deployment.yaml'
+                    sh 'kubectl apply -f ../service.yaml'
 
 
-                    }
                 }
-                    
-                    
-                    
-                    
             }
-            
+                    
+                    
+                    
+                    
         }
+            
     }
 }
+
     
 
