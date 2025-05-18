@@ -1,15 +1,28 @@
 #!/bin/bash
 
 # install jenkins on amazon linux in aws
-sudo yum update -y
-sudo wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo dnf update
+sudo dnf install java-17-amazon-corretto -y
+
+java -version
+
+Step 2: Install Java Development Kit (JDK)
+
+sudo dnf install java-17-amazon-corretto -y
+
+java -version
+
+Step 3: Add Jenkins Repository
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+Step 4: Import Jenkins Repository Key
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-sudo yum upgrade -y
-sudo amazon-linux-extras install java-openjdk11 -y
-sudo yum install jenkins -y
-sudo systemctl enable jenkins
+
+Step 5: Install Jenkins
+sudo dnf install jenkins
+Step 6: Start and Enable Jenkins Service
 sudo systemctl start jenkins
+sudo systemctl enable jenkin
 
 # then install git
 sudo yum install git -y
